@@ -12,7 +12,7 @@ app = Flask(__name__)
 #db = sqla.create_engine('sqlite:///zillow.db')
 #df = pd.read_sql('SELECT * FROM zillow', db, parse_dates=['Date'])
 df = pd.read_csv('combined_zillow.csv')
-df['Year'] = df['Date'].dt.year
+#df['Year'] = df['Date'].dt.year
 
 
 def TN_House_Predictor(City,Bedrooms,Year):

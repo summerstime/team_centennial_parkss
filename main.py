@@ -3,20 +3,12 @@ from flask import Flask, render_template, request
 import sqlalchemy as sqla
 # import numpy as np
 # import sqlite3 as sq
+import datetime as dt
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 app = Flask(__name__)
-
-# DATABASE_URL will contain the database connection string:
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
-# Connects to the database using the app config
-#db = SQLAlchemy(app)
-
-
-
-
 #db = sqla.create_engine('sqlite:///zillow.db')
 #df = pd.read_sql('SELECT * FROM zillow', db, parse_dates=['Date'])
 df = pd.read_csv('combined_zillow.csv')

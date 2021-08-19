@@ -9,6 +9,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 app = Flask(__name__)
+
 #db = sqla.create_engine('sqlite:///zillow.db')
 #df = pd.read_sql('SELECT * FROM zillow', db, parse_dates=['Date'])
 df = pd.read_csv('combined_zillow.csv')
@@ -71,8 +72,12 @@ def handle_form():
         return f'${float(prediction[0]):,.2f}' 
 
 
-if __name__ == '__main__':
 
+import os
+from run import app as application
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    application.run(host='0.0.0.0', port=port)
     # Run this when running on LOCAL server...
     # app.run(debug=True)
 

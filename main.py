@@ -8,9 +8,18 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 app = Flask(__name__)
-db = sqla.create_engine('sqlite:///zillow.db')
-df = pd.read_sql('SELECT * FROM zillow', db, parse_dates=['Date'])
-#df = pd.read_csv('/../Resources/combined_zillow_final.csv')
+
+# DATABASE_URL will contain the database connection string:
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
+# Connects to the database using the app config
+#db = SQLAlchemy(app)
+
+
+
+
+#db = sqla.create_engine('sqlite:///zillow.db')
+#df = pd.read_sql('SELECT * FROM zillow', db, parse_dates=['Date'])
+df = pd.read_csv('combined_zillow.csv')
 df['Year'] = df['Date'].dt.year
 
 

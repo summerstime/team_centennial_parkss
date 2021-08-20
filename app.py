@@ -72,13 +72,8 @@ def handle_form():
 
 
 
-#import os
-#from run import app as application
-if __name__ == '__main__':
-    #port = int(os.environ.get('PORT', 5000))
-    #application.run(host='0.0.0.0', port=port)
-    # Run this when running on LOCAL server...
-    # app.run(debug=True)
 
+if __name__ == '__main__':
+  
     # ...OR run this when PRODUCTION server.
     app.run(debug=False)

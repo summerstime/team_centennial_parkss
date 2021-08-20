@@ -3,23 +3,15 @@ from flask import Flask, render_template, request
 import sqlalchemy as sqla
 # import numpy as np
 # import sqlite3 as sq
+import datetime as dt
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 app = Flask(__name__)
-
-# DATABASE_URL will contain the database connection string:
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
-# Connects to the database using the app config
-#db = SQLAlchemy(app)
-
-
-
-
 db = sqla.create_engine('sqlite:///zillow.db')
 df = pd.read_sql('SELECT * FROM zillow', db, parse_dates=['Date'])
-#df = pd.read_csv('/../Resources/combined_zillow_final.csv')
+#df = pd.read_csv('combined_zillow.csv')
 df['Year'] = df['Date'].dt.year
 
 
@@ -79,8 +71,12 @@ def handle_form():
         return f'${float(prediction[0]):,.2f}' 
 
 
-if __name__ == '__main__':
 
+import os
+from run import app as application
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    application.run(host='0.0.0.0', port=port)
     # Run this when running on LOCAL server...
     # app.run(debug=True)
 
